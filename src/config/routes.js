@@ -3,10 +3,11 @@
 import { navigator } from './navigator';
 import { colors } from './colors';
 
-import { Home } from '../screens';
+import { CartsList, CartDetails } from '../screens';
 
 const routes = {
-	Home: { screen: Home },
+	CartsList: { screen: CartsList },
+	CartDetails: { screen: CartDetails },
 };
 
 const options = {

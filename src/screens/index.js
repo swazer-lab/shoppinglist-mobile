@@ -1,5 +1,6 @@
 /* @flow */
 
-import Home from './Home/Home';
+import CartsList from './Cart/CartsList';
+import CartDetails from './Cart/CartDetails';
 
-export { Home };
+export { CartsList, CartDetails };
