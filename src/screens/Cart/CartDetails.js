@@ -27,14 +27,14 @@ class CartDetails extends React.Component<Props> {
 
 		return (
 			<View style={styles.container}>
-				<Header buttons={buttons} onClosePress={() => this.props.navigation.goBack()} />
+				<Header tintColor={tintColor} buttons={buttons} onClosePress={() => this.props.navigation.goBack()} />
 
 				<ScrollView>
 					<View style={styles.header}>
 						<Text style={styles.createdBy(tintColor)}>{`Created by ${createdBy}`}</Text>
 						<TextInput style={styles.title} value={title} autoFocus />
 
-						<CartStatusController style={styles.statusController} status={status} />
+						<CartStatusController style={styles.statusController} marginEnd={15} status={status} />
 					</View>
 
 					<View style={styles.objectsContainer}>
@@ -66,7 +66,7 @@ class CartDetails extends React.Component<Props> {
 					</View>
 				</ScrollView>
 
-				<FabButton iconName='done' style={styles.fab} />
+				<FabButton iconName='done' style={styles.fab} tintColor={tintColor} />
 			</View>
 		);
 	}

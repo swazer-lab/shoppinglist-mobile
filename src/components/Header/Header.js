@@ -9,13 +9,15 @@ import { colors } from '../../config/colors';
 import { headerStyles as styles } from './styles';
 
 type Props = {
+	tintColor: string,
+
 	buttons: [],
 	onClosePress: () => void,
 }
 
 class Header extends React.Component<Props> {
 	render() {
-		const { buttons, onClosePress } = this.props;
+		const { tintColor, buttons, onClosePress } = this.props;
 
 		const Touchable = Platform.OS === 'ios' ? TouchableOpacity : TouchableNativeFeedback;
 
@@ -23,7 +25,7 @@ class Header extends React.Component<Props> {
 			<View key={key} style={styles.button(direction)}>
 				<Touchable onPress={onPress} style={styles.touchable}>
 					<View style={styles.touchableContent}>
-						<Icon name={icon} tintColor={Platform.OS === 'ios' ? colors.accent : colors.black} />
+						<Icon name={icon} tintColor={Platform.OS === 'ios' ? tintColor : colors.black} />
 					</View>
 				</Touchable>
 			</View>
@@ -41,5 +43,9 @@ class Header extends React.Component<Props> {
 		);
 	}
 }
+
+Header.defaultProps = {
+	tintColor: colors.accent,
+};
 
 export default Header;

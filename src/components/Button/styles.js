@@ -1,14 +1,13 @@
 /* @flow */
 
 import { StyleSheet, Platform } from 'react-native';
-import { colors } from '../../config/colors';
 
 export const fabButtonStyles = StyleSheet.create({
-	container: (moreStyles: {}) => ({
+	container: (moreStyles: {}, tintColor: string) => ({
 		width: 56,
 		height: 56,
 
-		backgroundColor: colors.primary,
+		backgroundColor: tintColor,
 
 		...Platform.select({
 			android: {

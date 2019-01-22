@@ -8,16 +8,18 @@ import { cartStatusController as styles } from './styles';
 
 type Props = {
 	style: {},
-	status: 'active' | 'completed' | 'canceled'
+	marginEnd: number,
+
+	status: 'active' | 'completed' | 'canceled',
 }
 
 class CartStatusController extends React.Component<Props> {
 	render() {
-		const { style, status } = this.props;
+		const { style, marginEnd, status } = this.props;
 
 		const getStatusObject = (tintColor, title) => (
 			<View style={styles.statusObject}>
-				<Text style={styles.title(tintColor)}>{title}</Text>
+				<Text style={styles.title(tintColor, marginEnd)}>{title}</Text>
 				<View style={styles.label(tintColor)} />
 			</View>
 		);

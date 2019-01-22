@@ -1,7 +1,7 @@
 /* @flow */
 
 import * as React from 'react';
-import { View, TextInput } from 'react-native';
+import { View, Text, TextInput } from 'react-native';
 
 import Swipeable from 'react-native-swipeable';
 import { Checkbox, Icon } from '../../components';
@@ -11,17 +11,18 @@ import { cartItemObjectStyles as styles } from './styles';
 
 type Props = {
 	style?: {},
+
 	item: {},
-	editable: boolean
+	editable: boolean,
 }
 
 class CartItemObject extends React.Component<Props> {
 	render() {
-		const { style, editable } = this.props;
-		const { title, status } = this.props.item;
+		const { style, item, editable } = this.props;
+		const { title, status } = item;
 
 		const leftContent = status === 'active' ? <View style={styles.action(colors.primary)} /> : null;
-		const rightButton = status === 'active' ? [<View style={styles.action(colors.secondary)} />] : null;
+		const rightButton = status === 'active' ? [<View style={styles.action(colors.secondary)}><Icon name='cancel' /></View>] : null;
 
 		const Container = (props) => (
 			<View style={styles.container}>
@@ -38,16 +39,22 @@ class CartItemObject extends React.Component<Props> {
 			</View>
 		);
 
-		return (
-			<Container>
-				<Checkbox status={status} />
+		const getTextComponent = () => {
+			if (editable) return (
 				<TextInput
 					style={styles.title(status === 'active')}
 					value={title}
-					editable={editable}
 				/>
+			);
+			else return (
+				<Text style={styles.title(status === 'active')}>{title}</Text>
+			);
+		};
 
-				{editable && <Icon name='cancel' tintColor={colors.gray} width={20} height={20} />}
+		return (
+			<Container>
+				<Checkbox status={status} />
+				{getTextComponent()}
 			</Container>
 		);
 	}

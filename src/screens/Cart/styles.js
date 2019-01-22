@@ -68,8 +68,7 @@ export const cartDetailsStyles = StyleSheet.create({
 	},
 
 	cartItem: {
-		paddingStart: 34,
-		paddingEnd: 18,
+		paddingHorizontal: 16,
 	},
 	separator: {
 		height: 1 / PixelRatio.get(),
@@ -160,8 +159,6 @@ export const cartItemObjectStyles = StyleSheet.create({
 		...moreStyles,
 	}),
 	title: (active: boolean) => ({
-		flex: 1,
-
 		marginStart: 12,
 		padding: 0,
 
@@ -171,6 +168,8 @@ export const cartItemObjectStyles = StyleSheet.create({
 
 	action: (tintColor: string) => ({
 		flex: 1,
+		justifyContent: 'center',
+		paddingStart: 12,
 		backgroundColor: tintColor,
 	}),
 });
@@ -229,9 +228,9 @@ export const cartStatusController = StyleSheet.create({
 		flexDirection: 'row',
 		marginBottom: 12,
 	},
-	title: (tintColor: string) => ({
+	title: (tintColor: string, marginEnd: number = 7) => ({
 		color: tintColor,
-		marginEnd: 7,
+		marginEnd: marginEnd,
 	}),
 	label: (tintColor: string) => ({
 		width: 20,

@@ -5,20 +5,23 @@ import { View, Platform, TouchableOpacity, TouchableNativeFeedback } from 'react
 
 import { Icon } from '..';
 
+import { colors } from '../../config/colors';
 import { fabButtonStyles as styles } from './styles';
 
 type Props = {
 	style?: {},
+	tintColor: string,
+
 	iconName: string
 }
 
 class FabButton extends React.Component<Props> {
 	render() {
-		const { style, iconName } = this.props;
+		const { style, tintColor, iconName } = this.props;
 		const TouchableComponent = Platform.OS === 'ios' ? TouchableOpacity : TouchableNativeFeedback;
 
 		return (
-			<View style={styles.container(style)}>
+			<View style={styles.container(style, tintColor)}>
 				<TouchableComponent style={styles.touchable}>
 					<View style={styles.touchableContent}>
 						<Icon name={iconName} />
@@ -28,5 +31,9 @@ class FabButton extends React.Component<Props> {
 		);
 	}
 }
+
+FabButton.defaultProps = {
+	tintColor: colors.primary,
+};
 
 export default FabButton;
