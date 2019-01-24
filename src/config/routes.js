@@ -11,6 +11,9 @@ const routes = {
 };
 
 const options = {
+	mode: 'model',
+	gesturesEnabled: false,
+
 	cardStyle: {
 		backgroundColor: colors.background_color,
 	},

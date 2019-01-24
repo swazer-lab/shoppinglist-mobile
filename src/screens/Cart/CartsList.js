@@ -32,7 +32,7 @@ class CartsList extends React.Component<Props> {
 					data={data.filter(cart => cart.status !== 'deleted')}
 					renderItem={renderCart}
 					keyExtractor={item => `key${item.id}`}
-					ListFooterComponent={() => <View style={{ height: 50 }} />}
+					ListFooterComponent={() => <View style={{ height: 100 }} />}
 				/>
 
 				<FabButton style={styles.fab} iconName='add' />

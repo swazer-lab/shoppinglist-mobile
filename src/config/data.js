@@ -7,6 +7,7 @@ export const data = [
 		id: '1',
 
 		title: 'Today’s Party',
+		notes: 'some notes here',
 		createdBy: 'Jack Sparrow',
 
 		status: 'active',

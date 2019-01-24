@@ -1,19 +1,24 @@
-const url = (link) => `http://localhost:5000/${link}`;
+/* @flow */
 
-// Account
-export const REGISTER = () => url('account/register');
-export const LOGIN = () => url('account/login');
-export const PROFILE = () => url('account/profile');
-export const FETCH_USERS = () => url('account/users');
+const root = 'http://localhost:5000/';
 
-// Cart
-export const FETCH_CARTS = () => url('cart/');
-export const FETCH_CART = (id) => url(`cart/show/${id}`);
-export const CREATE_CART = () => url('cart/create');
-export const UPDATE_CART = (id) => url(`cart/update/${id}`);
-export const DESTROY_CART = (id) => url(`cart/destroy/${id}`);
+// Account Urls
+const accountRoot = root.concat('account/');
+export const register_url = accountRoot.concat('register');
+export const login_url = accountRoot.concat('login');
+export const fetch_profile_url = accountRoot.concat('profile');
 
-// Items
-export const CREATE_ITEM = (cartId) => url(`cart/createItem/${cartId}`);
-export const UPDATE_ITEM = (itemId) => url(`cart/updateItem/${itemId}`);
-export const DESTROY_ITEM = (itemId) => url(`cart/destroyItem/${itemId}`);
+// Cart Urls
+const cartRoot = root.concat('cart/');
+export const fetch_carts_url = cartRoot.concat('fetch');
+export const fetch_cart_details_url = cartRoot.concat('details'); // cartId
+export const create_cart_url = cartRoot.concat('create');
+export const update_cart_url = cartRoot.concat('update'); // cartId
+export const remove_cart_url = cartRoot.concat('remove'); // cartId
+
+
+// Items Urls
+const itemRoot = root.concat('item/');
+export const create_item_url = itemRoot.concat('create'); // cartId
+export const update_item_url = itemRoot.concat('update'); // itemId
+export const remove_item_url = itemRoot.concat('remove'); // itemId
