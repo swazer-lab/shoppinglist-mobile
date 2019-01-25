@@ -240,4 +240,3 @@ export const cartStatusController = StyleSheet.create({
 		borderRadius: 10,
 	}),
 });
-

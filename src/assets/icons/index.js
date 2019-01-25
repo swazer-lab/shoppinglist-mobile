@@ -9,6 +9,7 @@ import notes from './notes';
 import date from './date';
 import items from './items';
 import share from './share';
+import add_circle from './add_circle';
 
 export default {
 	add,
@@ -20,4 +21,5 @@ export default {
 	date,
 	items,
 	share,
+	add_circle,
 };

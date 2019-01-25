@@ -2,7 +2,10 @@
 
 import { CartsActionTypes as ActionTypes } from '../types/ActionTypes';
 
-const initialState = {};
+const initialState = {
+	draftCarts: [],
+	carts: [],
+};
 
 export default function (state = initialState, action) {
 	switch (action.type) {

@@ -3,9 +3,12 @@
 import { StyleSheet, Platform } from 'react-native';
 
 export const fabButtonStyles = StyleSheet.create({
-	container: (moreStyles: {}, tintColor: string) => ({
-		width: 56,
-		height: 56,
+	container: (moreStyles: {}, tintColor: string, interpolatedSize: number, interpolateMargin: number) => ({
+		width: interpolatedSize,
+		height: interpolatedSize,
+
+		marginBottom: interpolateMargin,
+		marginEnd: interpolateMargin,
 
 		backgroundColor: tintColor,
 
