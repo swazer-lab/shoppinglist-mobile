@@ -92,6 +92,8 @@ export const cartObjectStyles = StyleSheet.create({
 		borderRadius: Platform.OS === 'ios' ? 8 : 6,
 		borderWidth: 0.25,
 		borderColor: colors.gray,
+
+		overflow: 'hidden',
 	},
 
 	header: {

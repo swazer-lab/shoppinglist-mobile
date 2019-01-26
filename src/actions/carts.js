@@ -51,8 +51,9 @@ export const fetchCartDetailsResult = (hasError: boolean, cart: {}) => ({
 	cart,
 });
 
-export const createCart = () => ({
+export const createCart = (draftCart: {}) => ({
 	type: ActionTypes.create_cart,
+	draftCart,
 });
 export const createCartResult = (hasError: boolean) => ({
 	type: ActionTypes.create_cart_result,

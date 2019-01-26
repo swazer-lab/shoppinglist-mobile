@@ -75,7 +75,10 @@ class CreateCartSheet extends React.Component<Props, State> {
 		this.props.dispatch(removeCartItem(uuid));
 	};
 	onCreateCartTouched = () => {
-		this.props.dispatch(createCart());
+		const { dispatch, draftCart } = this.props;
+		dispatch(createCart(draftCart));
+
+		this.dialogSheet.close();
 	};
 
 	render() {

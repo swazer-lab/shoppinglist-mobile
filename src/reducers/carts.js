@@ -74,7 +74,7 @@ export default function (state = initialState, action) {
 		case ActionTypes.create_cart:
 			return {
 				...state,
-				carts: [...newCartsList, { ...state.draftCart, uuid: require('uuid/v4')() }],
+				carts: [...newCartsList, { ...action.draftCart, uuid: require('uuid/v4')() }],
 			};
 	}
 
