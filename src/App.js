@@ -7,6 +7,7 @@ import { PersistGate } from 'redux-persist/es/integration/react';
 import { store, persiststore } from './config/store';
 
 import { AppNavigator } from './config/routes';
+import { setTopLevelNavigator } from './config/navigationService';
 
 type Props = {}
 
@@ -17,7 +18,7 @@ class App extends React.Component<Props> {
 
 	render() {
 		return (
-			<AppNavigator />
+			<AppNavigator ref={ref => setTopLevelNavigator(ref)} />
 		);
 	}
 }

@@ -19,7 +19,7 @@ type Props = {
 class CartObject extends React.Component<Props> {
 	onCartTouched = () => {
 		const { cart, onPress } = this.props;
-		onPress(cart);
+		onPress(cart.uuid);
 	};
 
 	render() {

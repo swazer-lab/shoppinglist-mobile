@@ -43,9 +43,21 @@ export default function (state = initialState, action) {
 				},
 			};
 		case ActionTypes.change_cart_item_title:
-			const changedCartItemTitleIndex = newCartItemsList.findIndex(x => x.uuid === action.uuid);
+			const changedCartItemTitleIndex = newCartItemsList.findIndex(item => item.uuid === action.uuid);
 			newCartItemsList[changedCartItemTitleIndex] =
 				{ ...newCartItemsList[changedCartItemTitleIndex], title: action.title };
+
+			return {
+				...state,
+				draftCart: {
+					...state.draftCart,
+					items: newCartItemsList,
+				},
+			};
+		case ActionTypes.change_cart_item_status:
+			const changedCartItemStatus = newCartItemsList.findIndex(item => item.uuid === action.uuid);
+			newCartItemsList[changedCartItemStatus] =
+				{ ...newCartItemsList[changedCartItemStatus], status: action.status };
 
 			return {
 				...state,
@@ -65,6 +77,11 @@ export default function (state = initialState, action) {
 					items: newCartItemsList,
 				},
 			};
+		case ActionTypes.set_draft_cart:
+			return {
+				...state,
+				draftCart: newCartsList.filter(cart => cart.uuid === action.uuid)[0],
+			};
 		case ActionTypes.clear_draft_cart:
 			return {
 				...state,
@@ -75,6 +92,24 @@ export default function (state = initialState, action) {
 			return {
 				...state,
 				carts: [...newCartsList, { ...action.draftCart, uuid: require('uuid/v4')() }],
+			};
+
+		case ActionTypes.update_cart:
+			const updatedCartIndex = newCartsList.findIndex(cart => cart.uuid === action.uuid);
+			newCartsList[updatedCartIndex] = action.cart;
+
+			return {
+				...state,
+				carts: newCartsList,
+			};
+
+		case ActionTypes.remove_cart:
+			const removedCartIndex = newCartsList.findIndex(cart => cart.uuid === action.uuid);
+			newCartsList.splice(removedCartIndex, 1);
+
+			return {
+				...state,
+				carts: newCartsList,
 			};
 	}
 

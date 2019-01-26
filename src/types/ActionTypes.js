@@ -1,5 +1,14 @@
 /* @flow */
 
+export const NavigationServiceActionTypes = {
+	navigate: 'NAVIGATION_SERVICE__NAVIGATE',
+	replace: 'NAVIGATION_SERVICE_REPLACE',
+	go_back: 'NAVIGATION_SERVICE__GO_BACK',
+	set_params: 'NAVIGATION_SERVICE__SET_PARAMS',
+	pop_to_top: 'NAVIGATION_SERVICE__POP_TO_TOP',
+	pop_to_route: 'NAVIGATION_SERVICE__POP_TO_ROUTE',
+};
+
 export const AuthActionTypes = {
 	change_name: 'AUTH__CHANGE_NAME',
 	change_email: 'AUTH__CHANGE_EMAIL',
@@ -23,13 +32,11 @@ export const CartsActionTypes = {
 	change_cart_item_title: 'CARTS__CHANGE_CART_ITEM_TITLE',
 	change_cart_item_status: 'CARTS__CHANGE_CART_ITEM_STATUS',
 	remove_cart_item: 'CARTS__REMOVE__CART_ITEM',
+	set_draft_cart: 'CARTS__SET_DRAFT_CART',
 	clear_draft_cart: 'CARTS__CLEAR_DRAFT_CART',
 
 	fetch_carts: 'CARTS__FETCH_CARTS',
 	fetch_carts_result: 'CARTS__FETCH_CARTS_RESULT',
-
-	fetch_cart_details: 'CARTS__FETCH_CART_DETAILS',
-	fetch_cart_details_result: 'CARTS__FETCH_CART_DETAILS_RESULT',
 
 	create_cart: 'CARTS__CREATE_CART',
 	create_cart_result: 'CARTS__CREATE_CART_RESULT',

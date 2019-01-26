@@ -26,6 +26,11 @@ class CartItemObject extends React.Component<Props> {
 		onChangeTitle(item.uuid, title);
 	};
 
+	onChangeStatus = () => {
+		const { onChangeStatus, item } = this.props;
+		onChangeStatus(item.uuid, item.status === 'active' ? 'completed' : 'active');
+	};
+
 	onRemovePress = () => {
 		const { item, onRemovePress } = this.props;
 		onRemovePress(item.uuid);
@@ -53,7 +58,7 @@ class CartItemObject extends React.Component<Props> {
 
 		return (
 			<View style={[styles.container, style]}>
-				<Checkbox status={status} />
+				<Checkbox status={status} onPress={this.onChangeStatus} />
 				{textComponent()}
 
 				{editable &&

@@ -9,12 +9,12 @@ import { HeaderWithAuth, FabButton } from '../../components';
 import CartObject from './CartObject';
 import CreateCartSheet from './CreateCartSheet';
 
+import { navigate } from '../../actions/navigationService';
+
 import { cartsListStyles as styles } from './styles';
 
 type Props = {
 	dispatch: Function,
-	navigation: any,
-
 	carts: [],
 }
 
@@ -30,8 +30,8 @@ class CartsList extends React.Component<Props, State> {
 
 	static navigationOptions = { header: null };
 
-	onCartTouched = (cart: {}) => {
-		this.props.navigation.navigate('CartDetails', { cart });
+	onCartTouched = (uuid: string) => {
+		this.props.dispatch(navigate('CartDetails', { uuid }));
 	};
 
 	onCreateCartTouched = () => {

@@ -27,6 +27,10 @@ export const removeCartItem = (uuid: string) => ({
 	type: ActionTypes.remove_cart_item,
 	uuid,
 });
+export const setDraftCart = (uuid: string) => ({
+	type: ActionTypes.set_draft_cart,
+	uuid,
+});
 export const clearDraftCart = () => ({
 	type: ActionTypes.clear_draft_cart,
 });
@@ -41,16 +45,6 @@ export const fetchCartsResult = (hasError: boolean, carts: []) => ({
 	carts,
 });
 
-export const fetchCartDetails = (cartId: string) => ({
-	type: ActionTypes.fetch_cart_details,
-	cartId,
-});
-export const fetchCartDetailsResult = (hasError: boolean, cart: {}) => ({
-	type: ActionTypes.fetch_cart_details_result,
-	hasError,
-	cart,
-});
-
 export const createCart = (draftCart: {}) => ({
 	type: ActionTypes.create_cart,
 	draftCart,
@@ -60,18 +54,19 @@ export const createCartResult = (hasError: boolean) => ({
 	hasError,
 });
 
-export const updateCart = (cartId: string) => ({
+export const updateCart = (uuid: string, cart: {}) => ({
 	type: ActionTypes.update_cart,
-	cartId,
+	uuid,
+	cart,
 });
 export const updateCartResult = (hasError: boolean) => ({
 	type: ActionTypes.update_cart_result,
 	hasError,
 });
 
-export const removeCart = (cartId: string) => ({
+export const removeCart = (uuid: string) => ({
 	type: ActionTypes.remove_cart,
-	cartId,
+	uuid,
 });
 export const removeCartResult = (hasError: boolean) => ({
 	type: ActionTypes.remove_cart_result,

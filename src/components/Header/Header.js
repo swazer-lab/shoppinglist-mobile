@@ -1,9 +1,9 @@
 /* @flow */
 
 import * as React from 'react';
-import { View, Platform, TouchableOpacity, TouchableNativeFeedback } from 'react-native';
+import { View } from 'react-native';
 
-import { Icon } from '../../components';
+import { IconButton } from '../../components';
 
 import { colors } from '../../config/colors';
 import { headerStyles as styles } from './styles';
@@ -19,23 +19,18 @@ class Header extends React.Component<Props> {
 	render() {
 		const { tintColor, buttons, onClosePress } = this.props;
 
-		const Touchable = Platform.OS === 'ios' ? TouchableOpacity : TouchableNativeFeedback;
-
-		const renderButton = (icon, onPress, direction, key?) => (
-			<View key={key} style={styles.button(direction)}>
-				<Touchable onPress={onPress} style={styles.touchable}>
-					<View style={styles.touchableContent}>
-						<Icon name={icon} tintColor={Platform.OS === 'ios' ? tintColor : colors.black} />
-					</View>
-				</Touchable>
-			</View>
-		);
-
-		const renderButtons = () => buttons.map((button, index) => renderButton(button.icon, button.onPress, 'right', index));
+		const renderButtons = () => buttons.map((button, index) =>
+			<IconButton
+				key={index}
+				iconName={button.iconName}
+				tintColor={tintColor}
+				onPress={button.onPress}
+				style={styles.button}
+			/>);
 
 		return (
 			<View style={styles.container}>
-				{renderButton('back', onClosePress)}
+				<IconButton iconName='back' tintColor={tintColor} onPress={onClosePress} />
 				<View style={styles.buttonContainer}>
 					{renderButtons()}
 				</View>

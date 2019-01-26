@@ -1,7 +1,7 @@
 /* @flow */
 
 import * as React from 'react';
-import { View } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 
 import { Icon } from '../';
 
@@ -10,11 +10,12 @@ import { checkboxStyles as styles } from './styles';
 
 type Props = {
 	status: 'active' | 'completed' | 'canceled',
+	onPress: () => void,
 }
 
 class Checkbox extends React.Component<Props> {
 	render() {
-		const { status } = this.props;
+		const { status, onPress } = this.props;
 
 		const renderIcon = () => {
 			if (status === 'completed')
@@ -24,9 +25,11 @@ class Checkbox extends React.Component<Props> {
 		};
 
 		return (
-			<View style={styles.container(status)}>
-				{renderIcon()}
-			</View>
+			<TouchableOpacity onPress={onPress}>
+				<View style={styles.container(status)}>
+					{renderIcon()}
+				</View>
+			</TouchableOpacity>
 		);
 	}
 }

@@ -67,6 +67,9 @@ export const cartDetailsStyles = StyleSheet.create({
 		...fontMaker({ weight: '500' }),
 	},
 
+	itemsContainer: {
+		marginStart: 40,
+	},
 	cartItem: {
 		paddingHorizontal: 16,
 	},
@@ -75,7 +78,13 @@ export const cartDetailsStyles = StyleSheet.create({
 		backgroundColor: chroma(colors.gray).alpha(0.3),
 
 		marginStart: 32,
-		marginEnd: 16,
+		marginEnd: 24,
+	},
+
+	roundedButton: {
+		marginStart: 35,
+		marginTop: 10,
+		alignSelf: 'flex-start',
 	},
 
 	fab: {

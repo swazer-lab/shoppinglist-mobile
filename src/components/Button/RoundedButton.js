@@ -9,6 +9,8 @@ import { colors } from '../../config/colors';
 import { roundedButtonStyles as styles } from './styles';
 
 type Props = {
+	style?: {},
+
 	title: string,
 	tintColor: string,
 
@@ -17,11 +19,11 @@ type Props = {
 
 class RoundedButton extends React.Component<Props> {
 	render() {
-		const { title, tintColor, onPress } = this.props;
+		const { style, title, tintColor, onPress } = this.props;
 		const Touchable = Platform.OS === 'ios' ? TouchableOpacity : TouchableNativeFeedback;
 
 		return (
-			<View style={styles.container}>
+			<View style={[styles.container, style]}>
 				<Touchable onPress={onPress} style={styles.touchable} background={getRipple(tintColor)}>
 					<View style={styles.touchableContent}>
 						<Text style={styles.title(tintColor)}>{title}</Text>

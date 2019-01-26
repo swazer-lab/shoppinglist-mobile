@@ -43,31 +43,14 @@ export const headerStyles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 
-		paddingHorizontal: 16,
+		paddingHorizontal: 6,
 		paddingVertical: Platform.OS === 'ios' ? 8 : 16,
 		marginTop: Platform.OS === 'ios' ? 20 : 0,
 	},
 	buttonContainer: {
 		flexDirection: 'row',
 	},
-
-	button: (direction?: string = 'left') => ({
-		width: 28,
-		height: 28,
-
-		marginStart: direction === 'left' ? 0 : 20,
-
-		borderRadius: 50,
-		overflow: 'hidden',
-	}),
-	touchable: {
-		flex: 1,
-		alignItems: 'stretch',
-	},
-	touchableContent: {
-		flex: 1,
-		alignSelf: 'stretch',
-		justifyContent: 'center',
-		alignItems: 'center',
+	button: {
+		marginStart: 10,
 	},
 });
