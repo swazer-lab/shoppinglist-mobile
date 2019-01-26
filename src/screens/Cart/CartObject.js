@@ -47,7 +47,7 @@ class CartObject extends React.Component<Props> {
 					data={items}
 					renderItem={renderCartItem}
 					ItemSeparatorComponent={renderSeparator}
-					keyExtractor={item => `key${item.id}`}
+					keyExtractor={item => `key${item.uuid}`}
 					ListHeaderComponent={renderSeparator}
 					ListFooterComponent={renderSeparator}
 				/>

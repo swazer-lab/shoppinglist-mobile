@@ -4,9 +4,10 @@ import * as React from 'react';
 import { View, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 
-import { HeaderWithAuth, FabButton, DialogSheet } from '../../components';
-import CartObject from './CartObject';
+import { HeaderWithAuth, FabButton } from '../../components';
 
+import CartObject from './CartObject';
+import CreateCartSheet from './CreateCartSheet';
 
 import { cartsListStyles as styles } from './styles';
 
@@ -14,53 +15,62 @@ type Props = {
 	dispatch: Function,
 	navigation: any,
 
-	carts: []
+	carts: [],
 }
 
-class CartsList extends React.Component<Props> {
+type State = {
+	isSheetVisible: boolean,
+}
+
+class CartsList extends React.Component<Props, State> {
+	constructor(props) {
+		super(props);
+		this.state = { isSheetVisible: false };
+	}
+
 	static navigationOptions = { header: null };
 
 	onCartTouched = (cart: {}) => {
 		this.props.navigation.navigate('CartDetails', { cart });
 	};
 
-	onDialogSheetOpened = () => {
-		this.fabButton.hide();
+	onCreateCartTouched = () => {
+		this.setState({ isSheetVisible: true });
 	};
 
-	onDialogSheetClosed = () => {
+	onCreateCartSheetClosed = () => {
 		setTimeout(() => {
-			this.fabButton.show();
-		}, 200);
+			this.setState({ isSheetVisible: false });
+		}, 300);
 	};
 
 	render() {
 		const { carts } = this.props;
+		const { isSheetVisible } = this.state;
+
 		const renderCart = ({ item }) => <CartObject cart={item} onPress={this.onCartTouched} />;
 
 		return (
 			<View style={styles.container}>
 				<HeaderWithAuth />
+
 				<FlatList
 					style={styles.contentContainer}
 					data={carts}
 					renderItem={renderCart}
-					keyExtractor={item => `key${item.id}`}
+					keyExtractor={item => `key${item.uuid}`}
 					ListFooterComponent={() => <View style={{ height: 100 }} />}
 				/>
 
 				<FabButton
 					style={styles.fab}
 					iconName='add'
-					onPress={() => this.createCartSheet.open()}
-					ref={ref => this.fabButton = ref}
+					onPress={this.onCreateCartTouched}
+					visible={!isSheetVisible}
 				/>
-
-				<DialogSheet
-					placeholder='New Cart'
-					onOpen={this.onDialogSheetOpened}
-					onClose={this.onDialogSheetClosed}
-					ref={ref => this.createCartSheet = ref}
+				<CreateCartSheet
+					visible={isSheetVisible}
+					onClose={this.onCreateCartSheetClosed}
 				/>
 			</View>
 		);

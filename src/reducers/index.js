@@ -7,7 +7,6 @@ import storage from 'redux-persist';
 
 import auth from './auth';
 import carts from './carts';
-import items from './items';
 
 const generateConfig = (reducer, key, blacklist, whitelist) => {
 	const config = {
@@ -25,5 +24,4 @@ const generateConfig = (reducer, key, blacklist, whitelist) => {
 export default combineReducers({
 	auth,
 	carts,
-	items,
 });

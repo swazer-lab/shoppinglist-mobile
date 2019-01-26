@@ -3,6 +3,13 @@
 import { StyleSheet } from 'react-native';
 
 export const bottomSheetStyles = StyleSheet.create({
+	noContainer: {
+		position: 'absolute',
+		top: 0,
+		right: 0,
+		height: 0,
+		width: 0,
+	},
 	container: (visible: boolean) => ({
 		position: 'absolute',
 		top: 0,

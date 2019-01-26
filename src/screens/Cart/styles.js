@@ -147,32 +147,26 @@ export const cartObjectStyles = StyleSheet.create({
 export const cartItemObjectStyles = StyleSheet.create({
 	container: {
 		flex: 1,
-		overflow: 'hidden',
-	},
-	contentContainer: (moreStyles: {}) => ({
-		flex: 1,
 		flexDirection: 'row',
 		alignItems: 'center',
 
-		paddingVertical: 11,
+		height: 40,
+	},
+	title: {
+		flex: 1,
+		marginStart: 12,
+		color: colors.text_color,
+	},
+	textInput: {
+		flex: 1,
 
-		...moreStyles,
-	}),
-	title: (active: boolean) => ({
 		marginStart: 12,
 		padding: 0,
 
-		color: colors.black,
-		textDecorationLine: !active ? 'line-through' : undefined,
-	}),
-
-	action: (tintColor: string) => ({
-		flex: 1,
-		justifyContent: 'center',
-		paddingStart: 12,
-		backgroundColor: tintColor,
-	}),
+		color: colors.text_color,
+	},
 });
+
 
 export const cartUsersObjectStyles = StyleSheet.create({
 	container: {
@@ -240,3 +234,35 @@ export const cartStatusController = StyleSheet.create({
 		borderRadius: 10,
 	}),
 });
+
+export const createCartSheetStyles = StyleSheet.create({
+	container: {
+		flex: 1,
+	},
+	notes: {
+		padding: 0,
+		color: colors.text_color,
+	},
+
+	footer: {
+		flexDirection: 'row',
+		alignItems: 'center',
+
+		marginTop: 15,
+		marginHorizontal: -10,
+		marginBottom: -10,
+	},
+	contentContainer: {
+		flex: 1,
+		flexDirection: 'row',
+	},
+	iconButton: {
+		marginEnd: 4,
+	},
+
+	cartItemObject: {
+		marginStart: 15,
+		marginEnd: -8,
+	},
+});
+

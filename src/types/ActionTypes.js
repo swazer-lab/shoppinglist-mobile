@@ -19,6 +19,10 @@ export const AuthActionTypes = {
 export const CartsActionTypes = {
 	change_cart_title: 'CARTS__CHANGE_CART_TITLE',
 	change_cart_notes: 'CARTS__CHANGE_CART_NOTES',
+	add_cart_item: 'CARTS__ADD_CART_ITEM',
+	change_cart_item_title: 'CARTS__CHANGE_CART_ITEM_TITLE',
+	change_cart_item_status: 'CARTS__CHANGE_CART_ITEM_STATUS',
+	remove_cart_item: 'CARTS__REMOVE__CART_ITEM',
 	clear_draft_cart: 'CARTS__CLEAR_DRAFT_CART',
 
 	fetch_carts: 'CARTS__FETCH_CARTS',
@@ -35,19 +39,4 @@ export const CartsActionTypes = {
 
 	remove_cart: 'CARTS__REMOVE_CART',
 	remove_cart_result: 'CARTS__REMOVE_CART_RESULT',
-};
-
-export const ItemsActionTypes = {
-	change_item_title: 'ITEMS__CHANGE_ITEM_TITLE',
-	change_item_status: 'ITEMS__CHANGE_ITEM_STATUS',
-	clear_draft_item: 'ITEMS__CLEAR_DRAFT_ITEM',
-
-	create_item: 'ITEMS__CREATE_ITEM',
-	create_item_result: 'ITEMS__CREATE_ITEM_RESULT',
-
-	update_item: 'ITEMS__UPDATE_ITEM',
-	update_item_result: 'ITEMS__UPDATE_ITEM_RESULT',
-
-	remove_item: 'ITEMS__REMOVE_ITEM',
-	remove_item_result: 'ITEMS__REMOVE_ITEM_RESULT',
 };

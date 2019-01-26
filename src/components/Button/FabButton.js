@@ -1,7 +1,7 @@
 /* @flow */
 
 import * as React from 'react';
-import { View, Animated, Platform, TouchableOpacity, TouchableNativeFeedback } from 'react-native';
+import { View, Animated,Easing, Platform, TouchableOpacity, TouchableNativeFeedback } from 'react-native';
 
 import { Icon } from '..';
 
@@ -34,6 +34,7 @@ class FabButton extends React.Component<Props> {
 	animateButton = (toValue: number) => {
 		Animated.timing(this.animatedValue, {
 			toValue,
+			easing: Easing.linear,
 			duration: 200,
 		}).start();
 	};

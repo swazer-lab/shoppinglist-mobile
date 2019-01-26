@@ -5,11 +5,11 @@ import { colors } from '../../config/colors';
 
 export const checkboxStyles = StyleSheet.create({
 	container: (status: 'active' | 'completed' | 'canceled') => ({
-		width: 20,
-		height: 20,
+		width: 18,
+		height: 18,
 
 		borderWidth: status === 'active' ? 1.5 : 0,
-		borderColor: colors.gray,
+		borderColor: colors.text_color,
 		borderRadius: 10,
 	}),
 });

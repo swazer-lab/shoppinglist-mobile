@@ -10,9 +10,27 @@ export const changeCartNotes = (notes: string) => ({
 	type: ActionTypes.change_cart_notes,
 	notes,
 });
+export const addCartItem = () => ({
+	type: ActionTypes.add_cart_item,
+});
+export const changeCartItemTitle = (uuid: string, title: string) => ({
+	type: ActionTypes.change_cart_item_title,
+	uuid,
+	title,
+});
+export const changeCartItemStatus = (uuid: string, status: string) => ({
+	type: ActionTypes.change_cart_item_status,
+	uuid,
+	status,
+});
+export const removeCartItem = (uuid: string) => ({
+	type: ActionTypes.remove_cart_item,
+	uuid,
+});
 export const clearDraftCart = () => ({
 	type: ActionTypes.clear_draft_cart,
 });
+
 
 export const fetchCarts = () => ({
 	type: ActionTypes.fetch_carts,

@@ -44,28 +44,25 @@ class BottomSheet extends React.Component<Props, State> {
 		});
 	}
 
-	componentDidMount() {
-		BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
-	}
-
-	componentWillUnmount() {
-		BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
+	componentDidUpdate(prevProps: Props, prevState: State): void {
+		if (!prevState.visible && this.state.visible)
+			BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+		else if (prevState.visible && !this.state.visible)
+			BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
 	}
 
 	handleBackPress = () => {
-		if (this.state.visible) {
-			this.close();
-			return true;
-		}
+		this.close();
+		return true;
 	};
 
-	animateSheet = (property: any, toValue: number) => {
+	animateSheet = (property: any, toValue: number, onFinish) => {
 		Animated.timing(property, {
 			toValue,
 			duration: 200,
 			easing: Easing.linear,
 			useNativeDriver: true,
-		}).start();
+		}).start(() => onFinish && onFinish());
 	};
 
 	open = () => {
@@ -82,27 +79,31 @@ class BottomSheet extends React.Component<Props, State> {
 		const { onClose } = this.props;
 		if (onClose) onClose();
 
-		this.animateSheet(this.animateOpacity, 0);
-		this.animateSheet(this.animatedValue.y, this.state.sheetHeight);
+		const onAnimationFinished = () => this.setState({ visible: false });
 
-		setTimeout(() => {
-			this.setState({ visible: false });
-		}, 150);
+		this.animateSheet(this.animateOpacity, 0);
+		this.animateSheet(this.animatedValue.y, this.state.sheetHeight, onAnimationFinished);
+	};
+
+	onLayout = (event) => {
+		this.setState({ sheetHeight: event.nativeEvent.layout.height });
 	};
 
 	render() {
 		const { visible } = this.state;
-		const { children } = this.props;
 
 		const transform = this.animatedValue.getTranslateTransform();
 		const opacity = this.animateOpacity.interpolate({ inputRange: [0, 1], outputRange: [0, 0.6] });
+
+		if (!visible) return <View style={styles.noContainer} />;
 
 		return (
 			<View style={styles.container(visible)}>
 				<Animated.View style={styles.overlay(opacity)} />
 
-				<Animated.View style={styles.sheetContainer(transform)} {...this.panResponder.panHandlers}>
-					{visible && children}
+				<Animated.View
+					style={styles.sheetContainer(transform)} onLayout={this.onLayout}{...this.panResponder.panHandlers}>
+					{this.props.children}
 				</Animated.View>
 			</View>
 		);
