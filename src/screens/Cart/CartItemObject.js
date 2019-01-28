@@ -45,6 +45,7 @@ class CartItemObject extends React.Component<Props> {
 				return (
 					<TextInput
 						style={styles.textInput}
+						value={item.title}
 						placeholder={language.textEnterItemName}
 						onChangeText={this.onChangeTitle}
 					/>
