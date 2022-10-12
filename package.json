@@ -16,7 +16,7 @@
 		"axios-response-logger": "^0.1.0",
 		"chroma-js": "^2.0.2",
 		"react": "16.6.3",
-		"react-native": "0.57.8",
+		"react-native": "0.70.2",
 		"react-native-global-props": "^1.1.5",
 		"react-native-localization": "^2.0.3",
 		"react-native-svg": "^9.0.0",
